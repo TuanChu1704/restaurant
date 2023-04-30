@@ -28,7 +28,6 @@ boy_name VARCHAR(20),
 area_code VARCHAR(20),
 boy_phone VARCHAR(20),
 PRIMARY KEY (area_code),
-foreign key (area_code) references customer(area_code)
 );
 
  -- Create a SQL table called orders that stores order_id, customer_id, product_id,order_date,quantity.
@@ -38,6 +37,7 @@ customer_id INT,
 order_date DATE DEFAULT GETDATE(),
 product_id INT,
 quantity INT,
+product_img BLOB,
 PRIMARY KEY (order_id),
 foreign key (customer_id) references customer(customer_id),
 foreign key (product_id) references catalog(product_id)
@@ -46,20 +46,24 @@ foreign key (product_id) references catalog(product_id)
 -- Create onlineorder table
   CREATE TABLE Jujurestaurant.onlineorder(
 order_id INT,
+customer_id INT,
+order_date DATE DEFAULT GETDATE(),
+product_id INT,
+quantity INT,
 address VARCHAR(200),
 area_code VARCHAR(20),
 PRIMARY KEY (order_id),
-foreign key (address) references customer(address),
-foreign key (area_code) references customer(area_code),
-foreign key (area_code) references deliver_boy(area_code),
-foreign key (order_id) references orders(order_id)
+foreign key (area_code) references deliver_boy(area_code)
 );
 
 -- Create OnPremisesOrder table
   CREATE TABLE Jujurestaurant.OnPremisesOrder(
 order_id INT,
+customer_id INT,
+order_date DATE DEFAULT GETDATE(),
+product_id INT,
+quantity INT,
 table_number INT,
 Number_of_ppl INT,
-PRIMARY KEY (order_id),
-foreign key (order_id) references orders(order_id)
+PRIMARY KEY (order_id)
 );
