@@ -129,7 +129,7 @@ VALUES
 ('2023-4-15',11,5,'B01','Nguyen Thi Thap',5);
 
 -- Insert the data into the table OnPremisesOrder
-INSERT INTO OnPremisesOrder(`order_id`,`customer_id`,`product_id`,`quantity`,`table_number`,`Number_of_ppl`)
+INSERT INTO OnPremisesOrder(`order_date`,`customer_id`,`product_id`,`quantity`,`table_number`,`Number_of_ppl`)
 VALUES 
 ('2023-4-9',2,7,2,2,2),
 ('2023-6-1',1,1,6,2,1),
