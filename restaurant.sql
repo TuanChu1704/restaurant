@@ -28,14 +28,14 @@ PRIMARY KEY (product_id)
 boy_name VARCHAR(20),
 area_code VARCHAR(20),
 boy_phone VARCHAR(20),
-PRIMARY KEY (area_code),
+PRIMARY KEY (area_code)
 );
 
  -- Create a SQL table called orders that stores order_id, customer_id, product_id,order_date,quantity,product_img.
   CREATE TABLE Jujurestaurant.orders(
 order_id INT,
 customer_id INT,
-order_date DATE DEFAULT GETDATE(),
+order_date DATE,
 product_id INT,
 quantity INT,
 PRIMARY KEY (order_id),
@@ -46,7 +46,7 @@ foreign key (product_id) references catalog(product_id)
 -- Create onlineorder table that stores order_id, customer_id, product_id,order_date,quantity,area_code,address.
   CREATE TABLE Jujurestaurant.onlineorder(
 order_id INT,
-order_date DATE DEFAULT GETDATE(),
+order_date DATE,
 customer_id INT,
 product_id INT,
 area_code VARCHAR(20),
@@ -60,7 +60,7 @@ foreign key (area_code) references deliver_boy(area_code)
   CREATE TABLE Jujurestaurant.OnPremisesOrder(
 order_id INT,
 customer_id INT,
-order_date DATE DEFAULT GETDATE(),
+order_date DATE,
 product_id INT,
 quantity INT,
 table_number INT,
@@ -77,7 +77,7 @@ VALUES
 (15,`Nhu`,`Phuong`,`Nguyen Thi Thap`,`B01`,124654444),
 (17,`Van`,`khanh`,`Nguyen Trai`,`C01`,124685246),
 (18,`Phung`,`Nguyen`,`Nguyen Van Linh`,`A01`,303054362),
-(21,`Hoa`,`Vuong`,`Nguyen Van Linh`,`A01`156487529),
+(21,`Hoa`,`Vuong`,`Nguyen Van Linh`,`A01`,156487529),
 (22,`Thai`,`Vu`,`Nguyen Thi Thap`,`B01`,257986456),
 (24,`Khuong`,`Vuong`,`Ba Dinh`,`D01`,254385148),
 (1,`Chu`,`Tuan`,`Nguyen Van Linh`,`A01`,592509949),
@@ -125,14 +125,14 @@ INSERT INTO normalcustomer(`order_id`,`customer_id`,`product_id`,`area_code`,`ad
 VALUES 
 (3,2,12,`B01`,`Duong Ba Trac`,1),
 (19,8,10,`A01`,`Nguyen Van Linh`,1),
-(27,17,2,`C01`,`Nguyen Trai`1),
+(27,17,2,`C01`,`Nguyen Trai`,1),
 (31,24,5,`D01`,`Ba Dinh`,1),
 (38,19,3,`C01`,`Tran Hung Dao`,1),
 (4,3,2,`C01`,`Tran Hung Dao`,1),
 (6,9,8,`C01`,`Nguyen Trai`,2),
 (15,6,6,`C01`,`Tran Hung Dao`,1),
 (35,14,6,`D01`,`Ba Dinh`,2),
-(42,23,,9,`C01`,`Nguyen Trai`,1),
+(42,23,9,`C01`,`Nguyen Trai`,1),
 (7,9,9,`C01`,`Nguyen Trai`,3),
 (8,11,6,`B01`,`Nguyen Thi Thap`,3),
 (44,4,5,`C01`,`Tran Hung Dao`,2),
@@ -148,7 +148,7 @@ VALUES
 (5,2,4,10,2,4),
 (13,1,1,6,6,1),
 (21,1,15,6,5,1),
-(24,,1,16,1,2,1),
+(24,1,16,1,2,1),
 (29,4,18,5,1,4),
 (30,2,3,6,1,2),
 (33,1,21,3,1,2),
