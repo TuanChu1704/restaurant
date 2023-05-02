@@ -1,4 +1,4 @@
-drop database Jujurestaurant;
+drop database if exists `Jujurestaurant`;
 create database Jujurestaurant;
   
   -- Create a SQL table called customer that stores customer_ID, last_name, first_name, address, area_code, phone,discount_percent.
