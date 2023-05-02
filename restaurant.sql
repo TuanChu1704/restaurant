@@ -13,7 +13,7 @@ discount_percent VARCHAR(10) DEFAULT '0',
 PRIMARY KEY (customer_ID)
 );
 
-  -- Create a SQL table called catalog that stores product_id, price, product_name, prodcut_type,descriptions.
+  -- Create a SQL table called catalog that stores product_id, price, product_name, prodcut_type,descriptions,product_img.
 CREATE TABLE Jujurestaurant.catalog(
 product_id INT auto_increment,
 price VARCHAR(20),
@@ -32,6 +32,7 @@ boy_phone VARCHAR(20),
 PRIMARY KEY (area_code)
 );
 
+
 -- Create onlineorder table that stores order_id, customer_id, product_id,order_date,quantity,area_code,address.
 CREATE TABLE Jujurestaurant.onlineorder(
 order_id INT auto_increment,
@@ -42,6 +43,8 @@ area_code VARCHAR(20),
 address VARCHAR(200),
 quantity INT,
 PRIMARY KEY (order_id),
+foreign key (customer_id) references customer(customer_id),
+foreign key (product_id) references catalog(product_id),
 foreign key (area_code) references deliver_boy(area_code)
 );
 
@@ -54,7 +57,9 @@ product_id INT,
 quantity INT,
 table_number INT,
 Number_of_ppl INT,
-PRIMARY KEY (order_id)
+PRIMARY KEY (order_id),
+foreign key (customer_id) references customer(customer_id),
+foreign key (product_id) references catalog(product_id)
 );
 
 -- Insert the data into the table customer
@@ -111,38 +116,32 @@ VALUES
 -- Insert the data into the table onlineorder
 INSERT INTO Jujurestaurant.onlineorder(`order_date`,`customer_id`,`product_id`,`area_code`,`address`,`quantity`)
 VALUES
-('2023-4-3',2,12,'B01','Duong Ba Trac',1),
-('2023-4-11',8,10,'A01','Nguyen Van Linh',1),
-('2023-4-13',17,2,'C01','Nguyen Trai',1),
-('2023-4-14',24,5,'D01','Ba Dinh',1),
-('2023-4-15',19,3,'C01','Tran Hung Dao',1),
-('2023-4-7',3,2,'C01','Tran Hung Dao',1),
-('2023-4-9',9,8,'C01','Nguyen Trai',2),
-('2023-4-10',6,6,'C01','Tran Hung Dao',1),
-('2023-4-14',14,6,'D01','Ba Dinh',2),
-('2023-4-16',23,9,'C01','Nguyen Trai',1),
-('2023-4-9',9,9,'C01','Nguyen Trai',3),
-('2023-4-9',11,6,'B01','Nguyen Thi Thap',3),
-('2023-4-16',4,5,'C01','Tran Hung Dao',2),
-('2023-4-15',20,3,'D01','Ba Dinh',1),
-('2023-4-3',2,5,'B01','Duong Ba Trac',1),
-('2023-4-15',11,5,'B01','Nguyen Thi Thap',5);
+('2023-04-11',8,10,'A01','Nguyen Van Linh',1),
+('2023-04-13',17,2,'C01','Nguyen Trai',1),
+('2023-04-14',24,5,'D01','Ba Dinh',1),
+('2023-04-15',19,3,'C01','Tran Hung Dao',1),
+('2023-04-07',3,2,'C01','Tran Hung Dao',1),
+('2023-04-10',6,6,'C01','Tran Hung Dao',1),
+('2023-04-16',23,9,'C01','Nguyen Trai',1),
+('2023-04-09',11,6,'B01','Nguyen Thi Thap',3),
+('2023-04-16',4,5,'C01','Tran Hung Dao',2),
+('2023-04-15',20,3,'D01','Ba Dinh',1),
+('2023-04-03',2,5,'B01','Duong Ba Trac',1),
+('2023-04-15',11,5,'B01','Nguyen Thi Thap',5);
 
 -- Insert the data into the table OnPremisesOrder
-INSERT INTO Jujurestaurant.OnPremisesOrder(`order_date`,`customer_id`,`product_id`,`quantity`,`table_number`,`Number_of_ppl`)
+INSERT INTO Jujurestaurant.OnPremisesOrder(`order_date`,`quantity`,`customer_id`,`product_id`,`table_number`,`Number_of_ppl`)
 VALUES 
-('2023-4-9',2,7,2,2,2),
-('2023-6-1',1,1,6,2,1),
-('2023-4-8',2,4,10,2,4),
-('2023-4-9',1,1,6,6,1),
-('2023-4-10',1,15,6,5,1),
-('2023-4-11',1,16,1,2,1),
-('2023-4-12',4,18,5,1,4),
-('2023-4-12',2,3,6,1,2),
-('2023-4-13',1,21,3,1,2),
-('2023-4-13',2,11,5,3,2),
-('2023-4-14',2,25,6,3,2),
-('2023-4-15',5,9,12,1,5),
-('2023-4-16',2,14,6,3,2),
-('2023-4-5',2,3,2,3,2),
-('2023-4-6',2,3,3,1,2);
+('2023-04-09',2,7,2,2,2),
+('2023-06-01',1,1,6,2,1),
+('2023-04-08',2,4,10,2,4),
+('2023-04-09',1,1,6,6,1),
+('2023-04-10',1,15,6,5,1),
+('2023-04-11',1,16,1,2,1),
+('2023-04-12',4,18,5,1,4),
+('2023-04-12',2,3,6,1,2),
+('2023-04-13',1,21,3,1,2),
+('2023-04-13',2,11,5,3,2),
+('2023-04-14',2,25,6,3,2),
+('2023-04-05',2,3,2,3,2),
+('2023-04-06',2,3,3,1,2);
