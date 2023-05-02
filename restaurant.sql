@@ -1,7 +1,8 @@
+drop database Jujurestaurant;
 create database Jujurestaurant;
   
   -- Create a SQL table called customer that stores customer_ID, last_name, first_name, address, area_code, phone,discount_percent.
-  CREATE TABLE customer(
+CREATE TABLE Jujurestaurant.customer(
 customer_ID INT auto_increment,
 last_name VARCHAR(20),
 first_name VARCHAR(20),
@@ -13,7 +14,7 @@ PRIMARY KEY (customer_ID)
 );
 
   -- Create a SQL table called catalog that stores product_id, price, product_name, prodcut_type,descriptions.
-  CREATE TABLE catalog(
+CREATE TABLE Jujurestaurant.catalog(
 product_id INT auto_increment,
 price VARCHAR(20),
 descriptions VARCHAR(500),
@@ -24,16 +25,15 @@ PRIMARY KEY (product_id)
 );
 
   -- Create a SQL table called deliver_boy that stores boy_name, area_code, boy_phone.
-  CREATE TABLE deliver_boy(
+CREATE TABLE Jujurestaurant.deliver_boy(
 boy_name VARCHAR(20),
 area_code VARCHAR(20),
 boy_phone VARCHAR(20),
 PRIMARY KEY (area_code)
 );
 
-
 -- Create onlineorder table that stores order_id, customer_id, product_id,order_date,quantity,area_code,address.
-  CREATE TABLE onlineorder(
+CREATE TABLE Jujurestaurant.onlineorder(
 order_id INT auto_increment,
 order_date DATE,
 customer_id INT,
@@ -46,7 +46,7 @@ foreign key (area_code) references deliver_boy(area_code)
 );
 
 -- Create OnPremisesOrder table that stores order_id, customer_id, product_id,order_date,quantity,table_number,Number_of_ppl.
-  CREATE TABLE OnPremisesOrder(
+CREATE TABLE Jujurestaurant.OnPremisesOrder(
 order_id INT auto_increment,
 customer_id INT,
 order_date DATE,
@@ -58,7 +58,7 @@ PRIMARY KEY (order_id)
 );
 
 -- Insert the data into the table customer
-INSERT INTO customer(`customer_ID`,`last_name`,`first_name`,`address`,`area_code`,`phone`)
+INSERT INTO Jujurestaurant.customer(`customer_ID`,`last_name`,`first_name`,`address`,`area_code`,`phone`)
 VALUES 
 (5,	'Huong','Thu','Duong Ba Trac','B01',12465436),
 (10,'Thanh','Manh','Nguyen Thi Thap','B01',124654487),
@@ -86,7 +86,7 @@ VALUES
 (27,'Thuy','Thai','Nguyen Van Linh','A01',745986369);
 
 -- Insert the data into the table deliver_boy
-INSERT INTO deliver_boy (`boy_name`,`boy_phone`,`area_code`)
+INSERT INTO Jujurestaurant.deliver_boy (`boy_name`,`boy_phone`,`area_code`)
 VALUES 
 ('Charlie', 0132993435,'A01'),
 ( 'Hitle', 03434995956,'B01'),
@@ -94,7 +94,7 @@ VALUES
 ( 'Bingchili', 02384787385,'D01');
 
 -- Insert the data into the table catalog
-INSERT INTO catalog (`product_id`, `price`, `product_name`, `product_type`, `descriptions`, `product_img`)
+INSERT INTO Jujurestaurant.catalog (`product_id`, `price`, `product_name`, `product_type`, `descriptions`, `product_img`)
 VALUES 
 (2, '15$', 'Ramen', 'Food', 'Rramen is a Japanese noodle soup, with a combination of a rich flavoured broth, one of a variety of types of noodle and a selection of meats or vegetables, often topped with a boiled egg.', load_file('img\\ramen.png')),
 (7, '7$', 'Cappuccino', 'Beverage', 'The traditional cappuccino consists of a single espresso, on which the barista pours the hot foamed milk.', load_file('img\\Cappuccino.png')),
@@ -109,7 +109,7 @@ VALUES
 (9, '16$', 'Yakisoba', 'Food', 'Yakisoba is a classic Japanese stir-fried noodle dish that’s seasoned with a sweet and savory sauce similar to Worcestershire sauce.', load_file('img\\Yakisoba.png'));
 
 -- Insert the data into the table onlineorder
-INSERT INTO onlineorder(order_date,customer_id,product_id,area_code,address,quantity)
+INSERT INTO Jujurestaurant.onlineorder(`order_date`,`customer_id`,`product_id`,`area_code`,`address`,`quantity`)
 VALUES
 ('2023-4-3',2,12,'B01','Duong Ba Trac',1),
 ('2023-4-11',8,10,'A01','Nguyen Van Linh',1),
@@ -129,7 +129,7 @@ VALUES
 ('2023-4-15',11,5,'B01','Nguyen Thi Thap',5);
 
 -- Insert the data into the table OnPremisesOrder
-INSERT INTO OnPremisesOrder(`order_date`,`customer_id`,`product_id`,`quantity`,`table_number`,`Number_of_ppl`)
+INSERT INTO Jujurestaurant.OnPremisesOrder(`order_date`,`customer_id`,`product_id`,`quantity`,`table_number`,`Number_of_ppl`)
 VALUES 
 ('2023-4-9',2,7,2,2,2),
 ('2023-6-1',1,1,6,2,1),
